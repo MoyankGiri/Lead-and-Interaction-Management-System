@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="key-account-manager-kam-lead-management-system">Key Account Manager (KAM) Lead Management System</h1>
+<h2 id="1-project-overview">1. Project Overview</h2>
+<p>This project is a modular web application for &quot;Key Account Manager (KAM) Lead Management System&quot; that combines <strong>FastAPI</strong> for backend API management and <strong>Streamlit</strong> for frontend visualization. It offers user authentication, lead management, performance tracking, and interaction handling, making it a robust solution for data-driven decision-making.</p>
+<blockquote>
+<p><strong>Note:</strong> <code>ComplianceDocument.pdf</code> is also provided in the zip file which answers all questions and requirements posed in the Problem Statement Document</p>
+</blockquote>
+<h3 id="features">Features:</h3>
+<ul>
+<li><strong>Secure Authentication</strong>: JWT-based token system.</li>
+<li><strong>Data Visualization</strong>: Interactive dashboards with Streamlit.</li>
+<li><strong>Extensibility</strong>: Modular design to easily add new APIs or features.</li>
+<li><strong>Dockerized Deployment</strong>: Simplifies setup and ensures consistency.</li>
+</ul>
+<h3 id="database-er-diagram">Database ER Diagram</h3>
+<p>The following ER diagram represents the database structure and schema
+<img src="file:///home/moyankgiri/UdaanProject/artifacts/udaan_erdiagram.png" alt="Database ER Diagram"></p>
+<hr>
+<h2 id="2-system-requirements">2. System Requirements</h2>
+<ul>
+<li><strong>Python</strong>: 3.9 or above</li>
+<li><strong>Docker</strong>: 20.10 or above</li>
+<li><strong>Docker Compose</strong>: 1.29 or above</li>
+<li><strong>FastAPI</strong>: Version specified in <a href="./fastapi/requirements.txt"><code>fastapi/requirements.txt</code></a></li>
+<li><strong>Streamlit</strong>: Version specified in <a href="./streamlit/requirements.txt"><code>streamlit/requirements.txt</code></a></li>
+<li><strong>jq library on Linux</strong>: Latest Version for testing using test script</li>
+</ul>
+<hr>
+<h2 id="3-installation-instructions">3. Installation Instructions</h2>
+<ol>
+<li>
+<p>Clone/ Download the codebase</p>
+</li>
+<li>
+<p>Run the build script to build the containers and populate the database with sample data:</p>
+<pre class="hljs"><code><div>./build.sh
+</div></code></pre>
+</li>
+</ol>
+<hr>
+<h2 id="4-running-instructions">4. Running Instructions</h2>
+<h3 id="backend-fastapi">Backend (FastAPI)</h3>
+<ul>
+<li>The FastAPI service runs at <code>http://localhost:8000</code>.</li>
+<li>To explore the API documentation, visit <code>http://localhost:8000/docs</code> or <code>http://localhost:8000/redoc</code>.</li>
+</ul>
+<h3 id="frontend-streamlit">Frontend (Streamlit)</h3>
+<ul>
+<li>The Streamlit app runs at <code>http://localhost:8501</code> and can be interacted with freely.</li>
+</ul>
+<hr>
+<h2 id="5-test-execution-guide">5. Test Execution Guide</h2>
+<ol>
+<li>
+<p>For testing:</p>
+<blockquote>
+<p>Note: For testing the endpoints using the script, ensure you have <code>jq</code> installed on your system for JSON parsing</p>
+</blockquote>
+<ul>
+<li>Used <strong>cURL</strong> tool to test API endpoints using the <code>test_enpoints.sh</code></li>
+</ul>
+<pre class="hljs"><code><div> ./test_enpoints.sh
+</div></code></pre>
+<ul>
+<li>Visit the Streamlit app for frontend interaction.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="6-api-documentation">6. API Documentation</h2>
+<p>The API includes the following endpoints:</p>
+<ul>
+<li>
+<p><strong>Authentication</strong>:</p>
+<ul>
+<li><code>POST /auth/register</code>: Register User.</li>
+<li><code>POST /auth/login</code>: Login User.</li>
+<li><code>GET /auth/me</code>: Get Current User.</li>
+</ul>
+</li>
+<li>
+<p><strong>Leads Management</strong>:</p>
+<ul>
+<li><code>POST /leads/</code>: Create Lead.</li>
+<li><code>GET /leads/</code>: Get All Leads.</li>
+<li><code>GET /leads/due_today</code>: Get Due Calls Today.</li>
+<li><code>GET /leads/{lead_id}</code>: Get Lead.</li>
+<li><code>PUT /leads/{lead_id}</code>: Update Lead.</li>
+<li><code>DELETE /leads/{lead_id}</code>: Delete Lead.</li>
+</ul>
+</li>
+<li>
+<p><strong>POCs (Points of Contact)</strong>:</p>
+<ul>
+<li><code>POST /pocs/</code>: Create Poc.</li>
+<li><code>GET /pocs/</code>: Get All Pocs.</li>
+<li><code>GET /pocs/{poc_id}</code>: Get Poc.</li>
+<li><code>DELETE /pocs/{poc_id}</code>: Delete Poc.</li>
+</ul>
+</li>
+<li>
+<p><strong>Interactions</strong>:</p>
+<ul>
+<li><code>POST /interactions/</code>: Create Interaction.</li>
+<li><code>GET /interactions/</code>: Get All Interactions.</li>
+<li><code>GET /interactions/{lead_id}</code>: Get Interaction.</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance</strong>:</p>
+<ul>
+<li><code>POST /performance/recalculate</code>: Recalculate Metrics.</li>
+<li><code>GET /performance/well_performing</code>: Get Well Performing Accounts.</li>
+<li><code>GET /performance/underperforming</code>: Get Underperforming Accounts.</li>
+<li><code>GET /performance/{lead_id}</code>: Get Performance Metrics.</li>
+<li><code>PUT /performance/{lead_id}</code>: Update Performance Metrics.</li>
+</ul>
+</li>
+</ul>
+<p>Refer to the <a href="http://localhost:8000/docs">Local FastAPI documentation</a> for detailed specifications.</p>
+<hr>
+<h2 id="7-sample-usage-examples">7. Sample usage examples</h2>
+<p>a. Registration example can be seen in below attached screenshot
+<img src="file:///home/moyankgiri/UdaanProject/artifacts/registerpage.png" alt="Sample Registartion"></p>
+<p>Other usage examples can be seen in the Demo Video</p>
+<hr>
+<h2 id="8-project-structure">8. Project Structure</h2>
+<pre class="hljs"><code><div>├── README.md                          # Project documentation file.
+├── README_tmp.html                    # Temporary HTML version of README.
+├── artifacts                          # Directory for project artifacts.
+│   └── udaan_erdiagram.png            # Entity-relationship diagram.
+├── build.sh                           # Shell script for building the project.
+├── database                           # Directory containing database files.
+│   └── createdatabase.sql             # SQL script to create the database.
+├── docker-compose.yml                 # Docker Compose configuration file.
+├── fastapi                            # Directory for the FastAPI application.
+│   ├── Dockerfile                     # Dockerfile for FastAPI.
+│   ├── app                            # FastAPI application code.
+│   │   ├── auth                       # Directory for authentication-related files.
+│   │   │   ├── auth.py                # Authentication logic for FastAPI.
+│   │   │   └── jwt.py                 # JWT token generation and validation.
+│   │   ├── crud.py                    # CRUD operations for FastAPI.
+│   │   ├── database.py                # Database connection and management logic.
+│   │   ├── main.py                    # Main FastAPI application entry point.
+│   │   ├── models.py                  # Data models for FastAPI.
+│   │   ├── routers                    # Directory for route handlers.
+│   │   │   ├── interactions.py        # Interactions endpoint logic.
+│   │   │   ├── leads.py               # Leads management endpoint logic.
+│   │   │   ├── performance.py         # Performance tracking endpoint logic.
+│   │   │   └── pocs.py                # POCs management endpoint logic.
+│   │   └── schemas.py                 # Data validation schemas for FastAPI.
+│   └── requirements.txt               # Required Python packages for FastAPI.
+├── streamlit                          # Directory for the Streamlit app.
+│   ├── Dockerfile                     # Dockerfile for Streamlit app.
+│   ├── api.py                         # API interaction logic for Streamlit app.
+│   ├── app.py                         # Main Streamlit application entry point.
+│   └── requirements.txt               # Required Python packages for Streamlit.
+└── test_endpoints.sh                  # Shell script to test FastAPI endpoints.
+</div></code></pre>
+<ul>
+<li><strong><code>fastapi/app/auth</code></strong>: Manages user authentication, including JWT creation and validation.</li>
+<li><strong><code>fastapi/app/routers</code></strong>: Contains modular API routers for managing leads, performance data, and more.</li>
+<li><strong><code>streamlit/</code></strong>: Interactive User Interface.</li>
+</ul>
+<hr>
+<h2 id="9-interesting-techniques">9. Interesting Techniques</h2>
+<ol>
+<li><strong>JWT Authentication</strong>: Secure token-based authentication in <a href="./fastapi/app/auth/jwt.py"><code>auth/jwt.py</code></a>.</li>
+<li><strong>ORM Models</strong>: Database abstraction using Pydantic and SQLAlchemy in <a href="./fastapi/app/models.py"><code>models.py</code></a>.</li>
+<li><strong>Dynamic API Routing</strong>: Modularized routers for scalability in <a href="./fastapi/app/routers"><code>routers</code></a>.</li>
+<li><strong>Background Tasks</strong>: Lightweight background tasks for recalculating performance metrics.</li>
+<li><strong>Componentized Frontend</strong>: Modular Streamlit UI with reusable functions for forms and lists.</li>
+<li><strong>SQLAlchemy Expressions</strong>: Efficient calculation of due calls and performance metrics using dynamic ORM queries.</li>
+</ol>
+<hr>
+
+</body>
+</html>
